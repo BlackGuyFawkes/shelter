@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Toronto Shelter Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>Toronto Shelter Availability Dashboard</h1>
+  <select id="sectorFilter">
+    <option value="">All Sectors</option>
+    <option value="Men">Men</option>
+    <option value="Women">Women</option>
+    <option value="Youth">Youth</option>
+    <option value="Family">Family</option>
+  </select>
+  <canvas id="shelterChart" width="600" height="300"></canvas>
+  <script src="script.js"></script>
+</body>
+</html>
