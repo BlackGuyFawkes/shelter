@@ -1,8 +1,8 @@
-from fastapi import FastAPI, Query
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, FileResponse
-from fastapi.staticfiles import StaticFiles
 import csv
+import os
 
 app = FastAPI()
 
@@ -13,11 +13,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.mount("/static", StaticFiles(directory="frontend"), name="static")
-
 @app.get("/", response_class=HTMLResponse)
-async def get_ui():
-    return FileResponse("frontend/index.html")
+async def serve_home():
+    return FileResponse("index.html")
+
+@app.get("/styles.css")
+async def serve_styles():
+    return FileResponse("styles.css")
+
+@app.get("/script.js")
+async def serve_script():
+    return FileResponse("script.js")
 
 def load_shelter_data():
     shelters = []
